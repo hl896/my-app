@@ -51,9 +51,12 @@ function App() {
     setLoaded(true)
   }
 
-  const delData = ()=>{
+  const delData =async () => {
     console.log('del data')
+
     setPost(post.slice(0,-1))
+
+
     
   }
   
