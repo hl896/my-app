@@ -1,14 +1,12 @@
 import React,  { useEffect, useState } from 'react';
-
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import { styled } from '@mui/material/styles';
+import Table from '@mui/material/Table';
 import axios from 'axios';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -42,22 +40,14 @@ function App() {
   },[])
   if (!post) return null;
 
-  
-  
-
   const loadData = ()=>{
     console.log('post', post)
-    
     setLoaded(true)
   }
 
   const delData =async () => {
     console.log('del data')
-
     setPost(post.slice(0,-1))
-
-
-    
   }
   
   const addData = ()=>{
@@ -68,41 +58,36 @@ function App() {
   }
   return (
     <div  style={{ height: 400, width: '100%' }}>
-
-<TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell align="left">domains</StyledTableCell>
-            <StyledTableCell align="left">country</StyledTableCell>
-            <StyledTableCell align="left">name</StyledTableCell>
-            <StyledTableCell align="right">stateProvince</StyledTableCell>
-            <StyledTableCell align="left">web_pages</StyledTableCell>
-            <StyledTableCell align="right">alpha_two_code</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {loaded===true && post.map((row) => (
-            <StyledTableRow key={parseInt(Date.now() * Math.random())}>
-              
-              <StyledTableCell align="left">{row.domains.join(`\n`) }</StyledTableCell>
-              <StyledTableCell align="left">{row.country}</StyledTableCell>
-              <StyledTableCell align="left">{row.name}</StyledTableCell>
-              <StyledTableCell align="right">{row.stateProvince}</StyledTableCell>
-              <StyledTableCell align="left">{row.web_pages.join(`\n`)}</StyledTableCell>
-              <StyledTableCell align="right">{row.alpha_two_code}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-
-
-
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell align="left">domains</StyledTableCell>
+              <StyledTableCell align="left">country</StyledTableCell>
+              <StyledTableCell align="left">name</StyledTableCell>
+              <StyledTableCell align="right">stateProvince</StyledTableCell>
+              <StyledTableCell align="left">web_pages</StyledTableCell>
+              <StyledTableCell align="right">alpha_two_code</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {loaded===true && post.map((row) => (
+              <StyledTableRow key={parseInt(Date.now() * Math.random())}>
+                
+                <StyledTableCell align="left">{row.domains.join(`\n`) }</StyledTableCell>
+                <StyledTableCell align="left">{row.country}</StyledTableCell>
+                <StyledTableCell align="left">{row.name}</StyledTableCell>
+                <StyledTableCell align="right">{row.stateProvince}</StyledTableCell>
+                <StyledTableCell align="left">{row.web_pages.join(`\n`)}</StyledTableCell>
+                <StyledTableCell align="right">{row.alpha_two_code}</StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <button onClick={loadData} >Load </button>
       <button onClick={delData} >DELETE</button>
       <button onClick={addData} >ADD</button>
-      
     </div>
   );
 }
