@@ -35,7 +35,6 @@ function App() {
   const url = 'http://universities.hipolabs.com/search?country=Australia'
   const [loaded,setLoaded] = useState(false)
   const [post, setPost] = useState(null);
-
   useEffect(()=>{
     axios.get(`${url}`).then((response)=>{
       setPost(response.data)
@@ -45,14 +44,10 @@ function App() {
 
   
   
-  function createData(domains, country, name, stateProvince, web_pages,alpha_two_code) {
-    return { domains, country, name, stateProvince, web_pages,alpha_two_code };
-  }
-
 
   const loadData = ()=>{
     console.log('post', post)
-
+    
     setLoaded(true)
   }
 
@@ -64,6 +59,9 @@ function App() {
   
   const addData = ()=>{
     console.log('add data')
+    const ele = post.slice(0,1)[0];
+    console.log("ele:",ele)
+    setPost(prev=>[...prev,  ele])
   }
   return (
     <div  style={{ height: 400, width: '100%' }}>
